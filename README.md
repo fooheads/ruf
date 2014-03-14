@@ -1,6 +1,6 @@
 # Ruf 
 
-Ruf provides futures in Ruby by wrapping the futures in Scala.
+Ruf provides futures in JRuby by wrapping the futures in Scala.
 
 ## Examples
 
