@@ -17,5 +17,5 @@ Niclas Nilsson, [@niclasnilsson](http://twitter.com/niclasnilsson)
 
 ## License
 
-Ruf is licensed under the Apache 2 license.
+Ruf is licensed under the MIT license.
 
