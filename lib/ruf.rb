@@ -14,10 +14,19 @@ module Ruf
     $default_ec
   end
 
-  def self.future(l)
-    Java::scala.concurrent.package.future(l, default_ec)
+  def self.shutdown
+    $default_ec.shutdown if $default_ec
+    $default_ec = nil
   end
 
+  def self.future(l = nil, &block)
+    callable = l || block
+    Java::scala.concurrent.package.future(callable, default_ec)
+  end
+
+  def self.await_result(future, options={})
+    Await.result(future, Duration[options[:timeout]])
+  end
 end
 
 

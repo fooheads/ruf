@@ -13,16 +13,24 @@ end
 
 
 describe Ruf do
+  after do
+    Ruf::shutdown
+  end
+
   it 'should have a version number' do
     Ruf::VERSION.should_not be_nil
   end
 
-  it 'should do something useful' do
-    f = Ruf::future lambda { sleep 0.5; 3 }
-    f.should soon_be(3)
+  describe 'future' do
+    it 'should accept lambdas' do
+      f = Ruf::future lambda { sleep 0.5; 3 }
+      f.should soon_be(3)
+    end
 
-    # FIXME: rspec does not exit.
+    it 'should accept blocks' do
+      f = Ruf::future { sleep 0.5; 5 }
+      f.should soon_be(5)
+    end
   end
-
-
 end
+
